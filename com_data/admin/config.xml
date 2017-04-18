@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset
+            name="data"
+            label="JGLOBAL_DATA"
+            description="COM_DATA_CONFIG_EMAIL_SETTINGS_DESC">
+
+        <field
+                name="link_author"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                label="JGLOBAL_LINK_AUTHOR_LABEL"
+                description="JGLOBAL_LINK_AUTHOR_DESC"
+                default="0"
+                showon="show_author:1">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+
+        <field
+                name="show_create_date"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                label="JGLOBAL_SHOW_CREATE_DATE_LABEL"
+                description="JGLOBAL_SHOW_CREATE_DATE_DESC"
+                default="1">
+            <option value="1">JSHOW</option>
+            <option value="0">JHIDE</option>
+        </field>
+
+        <field
+                name="show_modify_date"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                label="JGLOBAL_SHOW_MODIFY_DATE_LABEL"
+                description="JGLOBAL_SHOW_MODIFY_DATE_DESC"
+                default="1">
+            <option value="1">JSHOW</option>
+            <option value="0">JHIDE</option>
+        </field>
+
+        <field
+                name="show_publish_date"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                label="JGLOBAL_SHOW_PUBLISH_DATE_LABEL"
+                description="JGLOBAL_SHOW_PUBLISH_DATE_DESC"
+                default="1">
+            <option value="1">JSHOW</option>
+            <option value="0">JHIDE</option>
+        </field>
+
+    </fieldset>
+
+</config>
