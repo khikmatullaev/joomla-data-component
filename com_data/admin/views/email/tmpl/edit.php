@@ -1,26 +1,8 @@
 <?php
 defined('_JEXEC') or die;
 
-
-use Joomla\Registry\Registry;
-
 JHtml::_('behavior.formvalidator');
-JHtml::_('behavior.keepalive');
-JHtml::_('formbehavior.chosen', '#jform_catid', null, array('disable_search_threshold' => 0 ));
 JHtml::_('formbehavior.chosen', 'select');
-
-$this->configFieldsets  = array('editorConfig');
-$this->hiddenFieldsets  = array('basic-limited');
-$this->ignore_fieldsets = array('jmetadata', 'item_associations');
-
-// Create shortcut to parameters.
-$params = clone($this->state->get('params'));
-$params->merge(new Registry($this->item->attribs));
-
-$app = JFactory::getApplication();
-$input = $app->input;
-
-$assoc = JLanguageAssociations::isEnabled();
 
 JFactory::getDocument()->addScriptDeclaration('
 	Joomla.submitbutton = function(task)
@@ -31,14 +13,9 @@ JFactory::getDocument()->addScriptDeclaration('
 		}
 	};
 ');
-
-// In case of modal
-$isModal = $input->get('layout') == 'modal' ? true : false;
-$layout  = $isModal ? 'modal' : 'edit';
-$tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_data&layout=' . $layout . $tmpl . '&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_data&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
     <div class="form-horizontal">
         <div class="row-fluid">
             <div class="span9">
@@ -57,8 +34,6 @@ $tmpl    = $isModal || $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=c
         </div>
 
         <input type="hidden" name="task" value="" />
-        <input type="hidden" name="return" value="<?php echo $input->getCmd('return'); ?>" />
-        <input type="hidden" name="forcedLanguage" value="<?php echo $input->get('forcedLanguage', '', 'cmd'); ?>" />
         <?php echo JHtml::_('form.token'); ?>
     </div>
 </form>

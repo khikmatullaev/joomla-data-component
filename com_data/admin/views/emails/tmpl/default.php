@@ -4,9 +4,6 @@ defined('_JEXEC') or die;
 
 $user      = JFactory::getUser();
 $userId    = $user->get('id');
-$listOrder = str_replace(' ' . $this->state->get('list.direction'), '', $this->state->get('list.fullordering'));
-$listDirn  = $this->escape($this->state->get('list.direction'));
-$saveOrder = $listOrder == 'a.ordering';
 $columns   = 10;
 
 $orderingColumn = 'created';
@@ -22,35 +19,32 @@ $orderingColumn = 'created';
             <table class="table table-striped" id="emailList">
                 <thead>
                 <tr>
-                    <th width="1%" class="nowrap center hidden-phone">
-                        <?php echo JHtml::_('searchtools.sort', '', 'a.ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
-                    </th>
                     <th width="1%" class="center">
                         <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
                     <th width="1%" class="nowrap center">
-                        <?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('JSTATUS');?>
                     </th>
                     <th style="min-width:100px" class="nowrap">
-                        <?php echo JHtml::_('searchtools.sort', 'COM_DATA_FIELD_EMAILTEXT_LABEL', 'a.email', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('COM_DATA_FIELD_EMAILTEXT_LABEL');?>
                     </th>
                     <th style="min-width:100px" class="nowrap">
-                        <?php echo JHtml::_('searchtools.sort', 'COM_DATA_FIELD_EMAILNAMETEXT_LABEL', 'a.name', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('COM_DATA_FIELD_EMAILNAMETEXT_LABEL');?>
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
-                        <?php echo JHtml::_('searchtools.sort',  'JAUTHOR', 'a.created_by', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('JAUTHOR');?>
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
-                        <?php echo JHtml::_('searchtools.sort', 'COM_DATA_HEADING_DATE_' . strtoupper($orderingColumn), 'a.' . $orderingColumn, $listDirn, $listOrder); ?>
+                        <?php echo JText::_('COM_DATA_HEADING_DATE');?>
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
-                        <?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('JGRID_HEADING_ACCESS');?>
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
-                        <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('JGRID_HEADING_LANGUAGE');?>
                     </th>
                     <th width="1%" class="nowrap hidden-phone">
-                        <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+                        <?php echo JText::_('JGRID_HEADING_ID');?>
                     </th>
                 </tr>
                 </thead>
@@ -67,25 +61,6 @@ $orderingColumn = 'created';
                     $canChange  = $user->authorise('core.edit.state', 'com_data.email.' . $item->id);
                     ?>
                     <tr class="row<?php echo $i % 2; ?>">
-                        <td class="order nowrap center hidden-phone">
-                            <?php
-                            $iconClass = '';
-                            if (!$canChange)
-                            {
-                                $iconClass = ' inactive';
-                            }
-                            elseif (!$saveOrder)
-                            {
-                                $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::_('tooltipText', 'JORDERINGDISABLED');
-                            }
-                            ?>
-                            <span class="sortable-handler<?php echo $iconClass ?>">
-                                <span class="icon-menu" aria-hidden="true"></span>
-                            </span>
-                            <?php if ($canChange && $saveOrder) : ?>
-                                <input type="text" style="display:none" name="order[]" size="5" value="<?php echo $item->ordering; ?>" class="width-20 text-area-order " />
-                            <?php endif; ?>
-                        </td>
                         <td class="center">
                             <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                         </td>

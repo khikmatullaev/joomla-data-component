@@ -1,13 +1,10 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-
-$listOrder = str_replace(' ' . $this->state->get('list.direction'), '', $this->state->get('list.fullordering'));
-$listDirn  = $this->escape($this->state->get('list.direction'));
 $columns   = 10;
 ?>
 
-<h1 align="center" style="padding: 20px 0px"><?php echo $this->header; ?></h1>
+<h1 align="center" style="padding: 20px 0"><?php echo $this->header; ?></h1>
 
 <div id="j-main-container">
     <?php if (empty($this->items)) : ?>
@@ -19,13 +16,13 @@ $columns   = 10;
             <thead>
             <tr>
                 <th width="1%" class="nowrap hidden-phone">
-                    <?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('JGRID_HEADING_ID'); ?>
                 </th>
                 <th style="min-width:100px" class="nowrap">
-                    <?php echo JHtml::_('searchtools.sort', 'EMAIL', 'a.email', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('EMAIL'); ?>
                 </th>
                 <th style="min-width:100px" class="nowrap">
-                    <?php echo JHtml::_('searchtools.sort', 'NAME   ', 'a.name', $listDirn, $listOrder); ?>
+                    <?php echo JText::_('NAME'); ?>
                 </th>
             </tr>
             </thead>

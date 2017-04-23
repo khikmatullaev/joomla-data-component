@@ -2,6 +2,8 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\Registry\Registry;
+
 
 /**
  * Item Model for an Email.
@@ -107,6 +109,8 @@ class DataModelEmail extends JModelAdmin
      * @param   string  $type    The table type to instantiate
      * @param   string  $prefix  A prefix for the table class name. Optional.
      * @param   array   $config  Configuration array for model. Optional.
+     *
+     * @return  JTable    A database object
      */
     public function getTable($type = 'Email', $prefix = 'DataTable', $config = array())
     {

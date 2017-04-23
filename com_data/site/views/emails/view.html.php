@@ -15,6 +15,20 @@ class DataViewEmails extends JViewLegacy
     protected $items;
 
     /**
+     * The model state
+     *
+     * @var  object
+     */
+    protected $state;
+
+    /**
+     * The pagination object
+     *
+     * @var  JPagination
+     */
+    protected $pagination;
+
+    /**
      * Header of view
      *
      * @var  array
@@ -35,6 +49,6 @@ class DataViewEmails extends JViewLegacy
         $this->state      = $this->get('State');
         $this->header     = "List of emails which acceptable to see for current user";
 
-        parent::display($tpl);
+        return parent::display($tpl);
     }
 }

@@ -62,9 +62,6 @@ class DataViewEmails extends JViewLegacy
         $canDo = JHelperContent::getActions('com_data', 'component', $this->state->get('filter.category_id'));
         $user  = JFactory::getUser();
 
-        // Get the toolbar object instance
-        $bar = JToolbar::getInstance('toolbar');
-
         JToolbarHelper::title(JText::_('COM_DATA_EMAILS_TITLE'));
 
         if ($canDo->get('core.create') || (count($user->getAuthorisedCategories('com_data', 'core.create'))) > 0)

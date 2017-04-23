@@ -20,7 +20,7 @@ class DataController extends JControllerLegacy
      * @param   boolean  $cachable   If true, the view output will be cached
      * @param   array    $urlparams  An array of safe URL parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
      *
-     * @return  ContentController  This object to support chaining.
+     * @return  DataController  This object to support chaining.
      */
     public function display($cachable = false, $urlparams = array())
     {
